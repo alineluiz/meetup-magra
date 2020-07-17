@@ -1,0 +1,38 @@
+{% extends 'meetup/base.html' %}
+
+{% block content %}
+<div class="container">
+    <p>
+        <h4>Eventos perto de você </h4>
+        <h5>Confira todos os eventos acontecendo em Joinville e Região</h5>
+    </p>
+    <div class="row">
+        {% for meetup in meetups %}
+            <div class="meetup">
+                <div class="date">
+                   {{ meetup.title  }}           
+                </div>
+
+                  <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-image">
+                       
+                        <img class="img-responsive" src="{{ meetup.image.url }}" >
+                      </div>
+              
+                      <div class="card-content">
+                          <h5>{{ meetup.name }}</h5>
+                       
+                      </div>
+              
+                      <div class="card-action">
+                        <a href="{% url 'meetup_detail' pk=meetup.pk %}" >Ver eventos</a>
+                      </div>
+                    </div>              
+                  </div>
+            </div>
+        {% endfor %}
+    </div>
+              
+</div>
+{% endblock %}

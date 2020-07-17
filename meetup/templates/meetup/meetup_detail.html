@@ -1,0 +1,25 @@
+{% extends 'meetup/base.html' %}
+
+{% block content %}
+    <div class="meetup">
+
+        <h2>MEETUP: {{ meetup.name }}</h2>
+        <hr />
+        {% for event in events %}
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.text|linebreaksbr }}</p>
+            
+            {% if event.is_past_due %}
+                Evento passado 
+            {% else %}
+                Próximo evento 
+            {% endif %}
+            
+            <div class="date">
+                {{ event.event_date }}
+            </div>
+            <hr />
+            
+        {% endfor %}
+    </div>
+{% endblock %}
